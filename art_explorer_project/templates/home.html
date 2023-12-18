@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Art Explorer</title>
+  </head>
+  <body>
+    <h1>Welcome to Art Explorer</h1>
+    <p>
+      Thank you for visiting. I really enjoy art so I created this site that
+      helps you explore a great collection of artworks from Harvard Art Museums.
+      -Jade
+    </p>
+    <a href="{% url 'artworks:artwork_list' %}">Explore Artworks</a>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+    {% endif %}
+  </body>
+</html>

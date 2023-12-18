@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artwork List</title>
+  </head>
+  <body>
+    <h1>Artwork List</h1>
+    <a href="{% url 'home' %}">Back to Home</a>
+    <a href="{% url 'comments:comment_list' %}">View Comments</a>
+
+    <p>
+      Type in any keyword such as coin, green, London etc. to find specific
+      artwork. Use the comments link to write about the artwork you've seen.
+    </p>
+    <form method="get" action="{% url 'artworks:artwork_list' %}">
+      <label for="search">Search:</label>
+      <input
+        type="text"
+        name="q"
+        id="search"
+        placeholder="enter keyword here"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <ul>
+      {% for artwork in search_results %}
+      <li>
+        <strong>{{ artwork.title }}</strong><br />
+        Artist: {{ artwork.artist }}<br />
+        Description: {{ artwork.description }}<br />
+        {% if artwork.image_url %}
+        <img
+          src="{{ artwork.image_url }}"
+          alt="{{ artwork.title }}"
+          style="max-width: 300px"
+        />
+        {% else %} No image available {% endif %}
+        <!-- Add more fields later -->
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+  </body>
+</html>

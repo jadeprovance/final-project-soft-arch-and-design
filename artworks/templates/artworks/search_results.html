@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+
+    <ul>
+      {% for artwork in search_results %}
+      <li>
+        <strong>{{ artwork.title }}</strong><br />
+        Artist: {{ artwork.artist }}<br />
+        Description: {{ artwork.description }}<br />
+        {% if artwork.image_url %}
+        <img
+          src="{{ artwork.image_url }}"
+          alt="{{ artwork.title }}"
+          style="max-width: 300px"
+        />
+        {% else %} No image available {% endif %}
+        <!-- Add more fields later -->
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+  </body>
+</html>

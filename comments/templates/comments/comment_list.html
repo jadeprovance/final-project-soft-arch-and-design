@@ -1,0 +1,13 @@
+<h2>Comments</h2>
+<p>Share your thoughts on the artwork you searched</p>
+<a href="{% url 'home' %}">Back to Home</a>
+<a href="{% url 'artworks:artwork_list' %}">Back to Artwork List</a>
+{% for comment in comments %}
+<p>{{ comment.content }} - {{ comment.timestamp }}</p>
+{% endfor %}
+
+<!-- Display the form for adding comments -->
+<form method="post" action="{% url 'comments:add_comment' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Add Comment</button>
+</form>
